@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación | Dustyn Dmitri</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Dancing+Script:wght@600&display=swap');
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #111 0%, #000 100%);
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    section {
+      padding: 60px 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h1, h2 {
+      background: linear-gradient(45deg, #FFD700, #FFEC8B, #FFD700);
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 15px rgba(255,215,0,0.4);
+      margin: 10px 0;
+    }
+
+    p {
+      font-size: 1.1em;
+      color: #ddd;
+      max-width: 400px;
+      line-height: 1.5em;
+    }
+
+    .frase {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.6em;
+      color: #FFEC8B;
+      text-shadow: 0 0 15px #FFD70066;
+      margin: 25px 0 10px;
+      max-width: 500px;
+    }
+
+    .divider {
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #FFD700, #FFEC8B, #FFD700);
+      border-radius: 10px;
+      margin: 30px auto;
+      box-shadow: 0 0 15px #FFD70088;
+    }
+
+    .foto {
+      width: 90%;
+      max-width: 350px;
+      margin: 25px 0;
+      border-radius: 20px;
+      border: 2px solid #FFD700;
+      object-fit: cover;
+      box-shadow: 0 0 20px #FFD70055;
+    }
+
+    #countdown {
+      font-size: 1.7em;
+      margin-top: 10px;
+      color: #FFD700;
+      text-shadow: 0 0 10px #FFD70088;
+    }
+
+    .btn {
+      margin-top: 30px;
+      padding: 15px 25px;
+      background: linear-gradient(45deg, #FFD700, #FFEC8B, #FFD700);
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 40px;
+      box-shadow: 0 0 20px #FFD70088;
+      transition: transform 0.3s;
+      display: inline-block;
+    }
+    .btn:hover {
+      transform: scale(1.08);
+    }
+
+    #intro {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85)), url('fondo.jpg') center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      text-align: center;
+      padding: 20px;
+    }
+    #intro button {
+      margin-top: 30px;
+      padding: 15px 40px;
+      font-size: 1.2em;
+      background: linear-gradient(45deg, #FFD700, #FFEC8B, #FFD700);
+      color: #000;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 20px #FFD700;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Pantalla de inicio -->
+  <div id="intro">
+    <h1>Dustyn Dmitri Funez Smith</h1>
+    <h2>Gala de Graduación & XVIII años</h2>
+    <button onclick="startInvitation()">✨ Ver invitación ✨</button>
+  </div>
+
+  <!-- Música -->
+  <audio id="music" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Contenido -->
+  <section>
+    <h2>Graduación & XVIII años</h2>
+    <div class="divider"></div>
+    <h2>Viernes 14 de Noviembre | 7:00 PM</h2>
+    <h2>Teatro Abril</h2>
+    <h3>Falta muy poco...</h3>
+    <div id="countdown"></div>
+    <div class="frase">"Una noche mágica está por comenzar..."</div>
+    <img class="foto" src="foto1.jpg" alt="Foto 1">
+  </section>
+
+  <section>
+    <div class="frase">"Cada final es solo el inicio de algo aún más grande..."</div>
+    <img class="foto" src="foto2.jpg" alt="Foto 2">
+  </section>
+
+  <section>
+    <div class="frase">"Los sueños que parecían imposibles... hoy se celebran."</div>
+    <img class="foto" src="foto3.jpg" alt="Foto 3">
+  </section>
+
+  <section>
+    <div class="frase">"Gracias por ser parte de este capítulo inolvidable 💛"</div>
+    <img class="foto" src="foto4.jpg" alt="Foto 4">
+    <a class="btn" href="https://maps.app.goo.gl/avix9LEtrDUtwv1V9" target="_blank">📍 Ver ubicación</a>
+    <a class="btn" href="LINK_DE_TU_FORMULARIO" target="_blank">✅ Confirmar asistencia</a>
+  </section>
+
+  <script>
+    function startInvitation() {
+      document.getElementById("intro").style.display = "none";
+      document.getElementById("music").play();
+      document.querySelectorAll("section")[0].classList.add("visible");
+    }
+
+    // Animación al hacer scroll
+    window.addEventListener('scroll', () => {
+      document.querySelectorAll('section').forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          sec.classList.add('visible');
+        }
+      });
+    });
+
+    // Cuenta regresiva
+    const eventDate = new Date("Nov 14, 2025 19:00:00").getTime();
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+      if (distance < 0) {
+        clearInterval(timer);
+        document.getElementById("countdown").innerHTML = "¡El gran día ha llegado! 🎉";
+      } else {
+        const days = Math.floor(distance / (1000*60*60*24));
+        const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+        const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+        const seconds = Math.floor((distance % (1000*60)) / 1000);
+        document.getElementById("countdown").innerHTML =
+          `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>
+
